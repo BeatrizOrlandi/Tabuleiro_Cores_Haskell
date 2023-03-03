@@ -68,13 +68,18 @@ comparaLinha (t:tab) x y | (t == x) = y : comparaLinha tab x y
 {-
 Exercício 3: Implemente a seguinte função que deve 
 retornar o número de ocorrências de uma cor no tabuleiro.
-
+-}
 
 countColor :: Color -> Board -> Int
 countColor _ [] = 0
-countColor x (t:tab) | (t == x) = 1 + countColor x tab
-                     | otherwise = countColor x tab
+countColor x (t:tab) = contaLinha t x + countColor x tab
 
+contaLinha :: [Color] -> Color -> Int
+contaLinha [] _ = 0
+contaLinha (t:tab) x | (t == x) = 1 + contaLinha tab x
+                     | otherwise = contaLinha tab x
+
+{-
 
 Exercício 4: Implemente a seguinte função que deve 
 converter uma letra na cor correspondente. Estaremos 
