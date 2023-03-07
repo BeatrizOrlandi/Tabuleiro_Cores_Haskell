@@ -18,7 +18,12 @@ a seguinte função que deve:
 -}
 
 main :: IO ()
-main = Lib.fill
+main = do
+          x <- readLines
+          print (createBoard (readColorLines x))
+          printCounters (createBoard (readColorLines x))
+          print(fill Red Yellow (createBoard (readColorLines x)))
+          
 
 
 {-
